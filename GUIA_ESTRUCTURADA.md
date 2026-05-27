@@ -61,7 +61,7 @@ Este proyecto no genera señales de trading ni recomendaciones de inversión. Su
 | Exploración inicial BTC (CoinGecko) | `btc_exploracion_inicial_coingecko.ipynb` | ✅ Completo |
 | Adquisición BTC rango fijo | `01_btc_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Adquisición DXY rango fijo | `02_dxy_adquisicion_rango_fijo.ipynb` | ✅ Completo |
-| Adquisición Oro | `03_oro_adquisicion_rango_fijo.ipynb` | ⏳ Pendiente |
+| Adquisición Gold | `03_gold_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Adquisición VIX | `04_vix_adquisicion_rango_fijo.ipynb` | ⏳ Pendiente |
 | Integración multi-activo | `05_integracion_multi_activo.ipynb` | ⏳ Pendiente |
 | Feature Engineering | `06_feature_engineering.ipynb` | ⏳ Pendiente |
@@ -78,7 +78,7 @@ El pipeline tiene **9 notebooks operativos** organizados en dos fases. La numera
 ```
 01 — Adquisición BTC
 02 — Adquisición DXY
-03 — Adquisición Oro
+03 — Adquisición Gold
 04 — Adquisición VIX
         │
         ▼
@@ -150,7 +150,7 @@ Notebooks modulares del pipeline operativo. Cada notebook tiene responsabilidad 
 |---|---|---|
 | `01_btc_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de BTC | `btc_processed.csv` |
 | `02_dxy_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de DXY | `dxy_processed.csv` |
-| `03_oro_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de Oro | `oro_processed.csv` |
+| `03_gold_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de Gold | `gold_processed.csv` |
 | `04_vix_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de VIX | `vix_processed.csv` |
 | `05_integracion_multi_activo.ipynb` | Unificar los cuatro datasets en un DataFrame único alineado temporalmente | `dataset_integrado.csv` |
 | `06_feature_engineering.ipynb` | Construir features de Fase 1 y Fase 2 con notación temporal correcta | `dataset_features.csv` |
@@ -194,7 +194,7 @@ DS2_BTC_DXY_ORO_VIX/
 │   └── pipeline/               ← Notebooks operativos del pipeline
 │       ├── 01_btc_adquisicion_rango_fijo.ipynb
 │       ├── 02_dxy_adquisicion_rango_fijo.ipynb
-│       ├── 03_oro_adquisicion_rango_fijo.ipynb
+│       ├── 03_gold_adquisicion_rango_fijo.ipynb
 │       ├── 04_vix_adquisicion_rango_fijo.ipynb
 │       ├── 05_integracion_multi_activo.ipynb
 │       ├── 06_feature_engineering.ipynb
@@ -296,7 +296,7 @@ Toda feature usa subscript `(t-1)` o anterior. El target es siempre `(t+1)`.
 Ejemplos:
 btc_processed.csv
 dxy_processed.csv
-oro_processed.csv
+gold_processed.csv
 vix_processed.csv
 dataset_integrado.csv
 dataset_features.csv
@@ -383,7 +383,7 @@ Los notebooks 01–04 son independientes entre sí y pueden ejecutarse en cualqu
 ```
 btc_processed.csv        ← generado por 01
 dxy_processed.csv        ← generado por 02
-oro_processed.csv        ← generado por 03
+gold_processed.csv        ← generado por 03
 vix_processed.csv        ← generado por 04
 dataset_integrado.csv    ← generado por 05
 dataset_features.csv     ← generado por 06

@@ -67,7 +67,7 @@ DS2_BTC_DXY_ORO_VIX/
 │   └── pipeline/
 │       ├── 01_btc_adquisicion_rango_fijo.ipynb
 │       ├── 02_dxy_adquisicion_rango_fijo.ipynb
-│       ├── 03_oro_adquisicion_rango_fijo.ipynb
+│       ├── 03_gold_adquisicion_rango_fijo.ipynb
 │       ├── 04_vix_adquisicion_rango_fijo.ipynb
 │       ├── 05_integracion_multi_activo.ipynb
 │       ├── 06_feature_engineering.ipynb
@@ -149,13 +149,13 @@ No se busca construir una arquitectura enterprise ni un sistema de trading en ti
 Completado:
 - BTC adquisición definitiva completada.
 - DXY adquisición definitiva completada.
-- Validaciones estructurales implementadas en ambos activos.
+- Gold adquisición definitiva completada.
+- Validaciones estructurales implementadas en todos los activos.
 - Features iniciales construidas.
 - Export modular funcionando.
 - Arquitectura base estabilizada.
 
 Siguientes etapas:
-- Adquisición Oro.
 - Adquisición VIX.
 - Integración multi-activo.
 - Feature Engineering.
