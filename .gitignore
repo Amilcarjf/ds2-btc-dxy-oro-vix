@@ -1,0 +1,41 @@
+# ── Datos generados por el pipeline ─────────────────────────────
+data/raw/
+data/interim/
+data/processed/
+
+# ── Notebooks de laboratorio y trabajo en bruto ──────────────────
+notebooks/laboratorio/
+
+# ── Checkpoints de Jupyter ───────────────────────────────────────
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# ── Archivos de sistema Windows ──────────────────────────────────
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ── Python ───────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Entornos virtuales ───────────────────────────────────────────
+.env
+.venv/
+venv/
+env/
+
+# ── Editores y IDEs ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
+
+# ── macOS (por si se trabaja desde otro sistema) ─────────────────
+.DS_Store
