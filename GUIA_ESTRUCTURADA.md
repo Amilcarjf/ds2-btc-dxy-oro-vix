@@ -62,7 +62,7 @@ Este proyecto no genera señales de trading ni recomendaciones de inversión. Su
 | Adquisición BTC rango fijo | `01_btc_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Adquisición DXY rango fijo | `02_dxy_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Adquisición Gold | `03_gold_adquisicion_rango_fijo.ipynb` | ✅ Completo |
-| Adquisición VIX | `04_vix_adquisicion_rango_fijo.ipynb` | ⏳ Pendiente |
+| Adquisición VIX | `04_vix_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Integración multi-activo | `05_integracion_multi_activo.ipynb` | ⏳ Pendiente |
 | Feature Engineering | `06_feature_engineering.ipynb` | ⏳ Pendiente |
 | EDA financiero multi-activo | `07_eda_financiero.ipynb` | ⏳ Pendiente |

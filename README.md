@@ -150,13 +150,13 @@ Completado:
 - BTC adquisición definitiva completada.
 - DXY adquisición definitiva completada.
 - Gold adquisición definitiva completada.
+- VIX adquisición definitiva completada.
 - Validaciones estructurales implementadas en todos los activos.
 - Features iniciales construidas.
 - Export modular funcionando.
 - Arquitectura base estabilizada.
 
 Siguientes etapas:
-- Adquisición VIX.
 - Integración multi-activo.
 - Feature Engineering.
 - EDA financiero.
