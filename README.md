@@ -156,8 +156,12 @@ Completado:
 - Export modular funcionando.
 - Arquitectura base estabilizada.
 
+Completado:
+- Integración multi-activo completada.
+- Dataset maestro validado (752 observaciones, 32 variables).
+- EDA multivariado completado.
+
 Siguientes etapas:
-- Integración multi-activo.
 - Feature Engineering.
 - EDA financiero.
 - Modelado.

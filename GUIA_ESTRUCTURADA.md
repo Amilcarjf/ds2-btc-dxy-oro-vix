@@ -63,7 +63,7 @@ Este proyecto no genera señales de trading ni recomendaciones de inversión. Su
 | Adquisición DXY rango fijo | `02_dxy_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Adquisición Gold | `03_gold_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Adquisición VIX | `04_vix_adquisicion_rango_fijo.ipynb` | ✅ Completo |
-| Integración multi-activo | `05_integracion_multi_activo.ipynb` | ⏳ Pendiente |
+| Integración multi-activo | `05_integracion_multi_activo.ipynb` | ✅ Completo |
 | Feature Engineering | `06_feature_engineering.ipynb` | ⏳ Pendiente |
 | EDA financiero multi-activo | `07_eda_financiero.ipynb` | ⏳ Pendiente |
 | Modelado baseline | `08_modelado_baseline.ipynb` | ⏳ Pendiente |
