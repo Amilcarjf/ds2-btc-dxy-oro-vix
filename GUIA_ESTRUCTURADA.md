@@ -17,6 +17,7 @@
 8. [Cómo ejecutar el pipeline](#8-cómo-ejecutar-el-pipeline)
 9. [Hipótesis de trabajo](#9-hipótesis-de-trabajo)
 10. [Documentación de referencia](#10-documentación-de-referencia)
+11. [Próximos pasos post-entrega](#11-próximos-pasos-post-entrega)
 
 ---
 
@@ -64,9 +65,9 @@ Este proyecto no genera señales de trading ni recomendaciones de inversión. Su
 | Adquisición Gold | `03_gold_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Adquisición VIX | `04_vix_adquisicion_rango_fijo.ipynb` | ✅ Completo |
 | Integración multi-activo | `05_integracion_multi_activo.ipynb` | ✅ Completo |
-| Feature Engineering | `06_feature_engineering.ipynb` | ⏳ Pendiente |
-| EDA financiero multi-activo | `07_eda_financiero.ipynb` | ⏳ Pendiente |
-| Modelado baseline | `08_modelado_baseline.ipynb` | ⏳ Pendiente |
+| Feature Engineering (Fase 1) | `06_feature_engineering.ipynb` | ✅ Completo |
+| EDA financiero multi-activo | `07_eda_financiero.ipynb` | ✅ Completo |
+| Modelado baseline | `08_modelado_baseline.ipynb` | ✅ Completo |
 | Modelado Fase 2 | `09_modelado_fase2.ipynb` | ⏳ Pendiente |
 
 ---
@@ -85,14 +86,15 @@ El pipeline tiene **9 notebooks operativos** organizados en dos fases. La numera
 05 — Integración multi-activo
         │
         ▼
-06 — Feature Engineering
+06 — Feature Engineering (Fase 1)
         │
         ▼
 07 — EDA financiero
         │
         ▼
-08 — Modelado baseline       ← Fase 1
-09 — Modelado Fase 2         ← Fase 2
+08 — Modelado baseline        ← Fase 1
+09 — Expansión de features +  ← Fase 2
+     Modelado Fase 2
 ```
 
 ### Rango temporal oficial
@@ -153,10 +155,10 @@ Notebooks modulares del pipeline operativo. Cada notebook tiene responsabilidad 
 | `03_gold_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de Gold | `gold_processed.csv` |
 | `04_vix_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de VIX | `vix_processed.csv` |
 | `05_integracion_multi_activo.ipynb` | Unificar los cuatro datasets en un DataFrame único alineado temporalmente | `dataset_integrado.csv` |
-| `06_feature_engineering.ipynb` | Construir features de Fase 1 y Fase 2 con notación temporal correcta | `dataset_features.csv` |
+| `06_feature_engineering.ipynb` | Construir features **de Fase 1 únicamente** (lags simples, volatilidad y MA de 7 días, niveles DXY/Oro/VIX) con notación temporal correcta. La expansión de features (lags extendidos, ventanas múltiples, interacciones) ocurre en el notebook 09 como Bloque 1 de la Fase 2 | `dataset_features.csv` |
 | `07_eda_financiero.ipynb` | EDA analítico multi-activo, correlaciones, regímenes, hipótesis descriptivas | — |
 | `08_modelado_baseline.ipynb` | Baseline naive y media histórica. Modelado lineal base. Evaluación Fase 1 | — |
-| `09_modelado_fase2.ipynb` | Features extendidas, modelos avanzados, validación temporal, feature importance | — |
+| `09_modelado_fase2.ipynb` | Bloque 1: expansión de features (lags extendidos, ventanas múltiples, interacciones). Luego: regímenes de mercado, modelos avanzados, validación temporal, feature importance | — |
 
 ### Estructura interna de cada notebook de adquisición
 
@@ -255,6 +257,14 @@ El drawdown es una medida acumulativa y estructural que puede introducir problem
 ### Modularización artesanal, no técnica
 
 La modularización de este proyecto es por **notebooks separados con responsabilidad clara**, no por scripts `.py`. El archivo `src/utils.py` existe en la estructura pero solo se activa si una función se repite en dos o más notebooks. No se modulariza por anticipación.
+
+### Separación estricta entre features de Fase 1 y Fase 2
+
+El notebook 06 construye **únicamente** las features definidas en la sección 3.2 del Diseño Técnico (Fase 1): lags simples de BTC, volatilidad y media móvil de 7 días, y niveles/retornos de DXY, Oro y VIX en `(t-1)`.
+
+La expansión de features — lags extendidos, ventanas múltiples de volatilidad (7d/14d/30d), MAs múltiples y variables de interacción — pertenece a la Fase 2 y se construye dentro del **notebook 09**, como Bloque 1, replicando la sección 8.3 del Diseño Técnico ("Bloque 1 — Expansión de Features").
+
+Esta separación se documenta explícitamente para evitar ambigüedad sobre qué notebook es responsable de qué conjunto de features. El dataset `dataset_features.csv` generado por el 06 contiene exclusivamente features de Fase 1.
 
 ### Doble baseline
 
@@ -411,6 +421,20 @@ Las hipótesis se validan en los notebooks 07, 08 y 09. El cierre formal ocurre 
 | Diseño técnico definitivo | `reports/DS2_Proyecto_Final_Diseño_Definitivo.docx` | Diseño completo del proyecto: target, features, hipótesis, pipeline, fuentes, baselines |
 | README | `README.md` | Descripción pública del proyecto, estructura y estado actual |
 | GUÍA ESTRUCTURADA | `GUIA_ESTRUCTURADA.md` | Este documento |
+
+---
+
+## 11. Próximos pasos post-entrega
+
+Una vez finalizado y entregado el proyecto académico, se evaluará una expansión del horizonte temporal del dataset (actualmente ~3 años, 2023-05-06 → 2026-05-06) hacia una ventana significativamente más amplia (~10 años).
+
+Objetivo de esa etapa posterior:
+
+- Evaluar si los hallazgos de correlación y las conclusiones de las hipótesis (H-1 a H-4) son robustos frente a un cambio sustancial de ventana temporal y ciclos económicos más amplios.
+- Disponer de mayor volumen de datos para entrenar modelos con menor riesgo de sobreajuste.
+- Esta expansión se realizará en una rama o notebook exploratorio separado, preservando intacta la versión oficial entregada para la evaluación académica.
+
+Esta etapa no forma parte del entregable principal y no debe iniciarse antes del cierre formal del proyecto (notebook 09).
 
 ---
 
