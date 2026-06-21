@@ -158,7 +158,7 @@ Notebooks modulares del pipeline operativo. Cada notebook tiene responsabilidad 
 | `06_feature_engineering.ipynb` | Construir features **de Fase 1 únicamente** (lags simples, volatilidad y MA de 7 días, niveles DXY/Oro/VIX) con notación temporal correcta. La expansión de features (lags extendidos, ventanas múltiples, interacciones) ocurre en el notebook 09 como Bloque 1 de la Fase 2 | `dataset_features.csv` |
 | `07_eda_financiero.ipynb` | EDA analítico multi-activo, correlaciones, regímenes, hipótesis descriptivas | — |
 | `08_modelado_baseline.ipynb` | Baseline naive y media histórica. Modelado lineal base. Evaluación Fase 1 | — |
-| `09_modelado_fase2.ipynb` | Bloque 1: expansión de features (lags extendidos, ventanas múltiples, interacciones). Luego: regímenes de mercado, modelos avanzados, validación temporal, feature importance | — |
+| `09_modelado_fase2.ipynb` | 8 bloques: (1) expansión de features, (2) regímenes de mercado, (3) selección y comparación de 5 modelos, (4) optimización de hiperparámetros, (5) validación temporal, (6) feature importance con SHAP, (7) análisis de robustez, (8) cierre: resultados vs. hipótesis | — |
 
 ### Estructura interna de cada notebook de adquisición
 
@@ -277,6 +277,15 @@ Todo modelo se compara contra dos baselines antes de evaluar su valor real:
 
 Si el modelo no supera al baseline, ese resultado se documenta honestamente. Un modelo que apenas supera al baseline sobre retornos de BTC es un resultado profesionalmente válido dado el nivel de ruido del activo.
 
+### Requisitos de entrega de la cátedra (Unidad de Entrega Final)
+
+La consigna formal de cierre del curso exige cuatro elementos que se incorporan al diseño técnico:
+
+1. **Optimización de hiperparámetros** — nuevo Bloque 4 dentro del notebook 09, entre la selección de modelos y la validación temporal. Se usa `RandomizedSearchCV` con `TimeSeriesSplit` interno, priorizando Random Forest y XGBoost.
+2. **SHAP** — pasa de técnica opcional a obligatoria dentro del bloque de Feature Importance.
+3. **Repositorio público** — el repo se mantiene privado durante el desarrollo y se pasa a público antes de la fecha de entrega.
+4. **Dataset accesible para reproducción** — `dataset_modeling.csv` y `dataset_features_full.csv` se incluyen como artefactos de entrega en el repositorio, como excepción puntual a la regla general de excluir `data/processed/` del control de versiones. Esto permite que un evaluador externo pueda correr el proyecto sin tener que ejecutar el pipeline completo de adquisición.
+
 ---
 
 ## 7. Convenciones del proyecto
@@ -373,7 +382,7 @@ docs: actualizar GUIA_ESTRUCTURADA con estado actual
 ### Requisitos
 
 ```bash
-pip install pandas yfinance matplotlib scikit-learn xgboost
+pip install pandas yfinance matplotlib scikit-learn xgboost shap
 ```
 
 ### Configuración de rutas
@@ -398,6 +407,14 @@ vix_processed.csv        ← generado por 04
 dataset_integrado.csv    ← generado por 05
 dataset_features.csv     ← generado por 06
 ```
+
+### Dos caminos de reproducción
+
+El proyecto admite dos formas equivalentes de ser ejecutado por un evaluador externo:
+
+**Camino A — Pipeline completo desde cero.** Ejecutar los notebooks 01 a 09 en orden. Esto regenera todos los datos desde las fuentes originales (Yahoo Finance vía `yfinance`) y reconstruye el proyecto íntegramente. Requiere conexión a internet y puede tomar varios minutos por la naturaleza secuencial del pipeline.
+
+**Camino B — Partir de los datasets ya incluidos.** Dado que `dataset_modeling.csv` y `dataset_features_full.csv` se incluyen como artefactos de entrega en el repositorio (excepción puntual a la regla general de no versionar `data/processed/`), un evaluador puede ejecutar directamente los notebooks 08 y 09 sin correr la adquisición completa. Esto garantiza que el proyecto sea evaluable incluso si hay restricciones de tiempo, de conexión, o cambios en la disponibilidad de las APIs externas al momento de la corrección.
 
 ---
 

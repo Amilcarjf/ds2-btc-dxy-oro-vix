@@ -3,6 +3,10 @@ data/raw/
 data/interim/
 data/processed/
 
+# Excepción: artefactos de entrega para reproducibilidad (Unidad de Entrega Final)
+!data/processed/dataset_modeling.csv
+!data/processed/dataset_features_full.csv
+
 # ── Notebooks de laboratorio y trabajo en bruto ──────────────────
 notebooks/laboratorio/
 

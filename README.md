@@ -147,21 +147,53 @@ No se busca construir una arquitectura enterprise ni un sistema de trading en ti
 ## Estado actual
 
 Completado:
-- BTC adquisición definitiva completada.
-- DXY adquisición definitiva completada.
-- Gold adquisición definitiva completada.
-- VIX adquisición definitiva completada.
-- Validaciones estructurales implementadas en todos los activos.
-- Features iniciales construidas.
-- Export modular funcionando.
-- Arquitectura base estabilizada.
-
-Completado:
-- Integración multi-activo completada.
-- Dataset maestro validado (752 observaciones, 32 variables).
-- EDA multivariado completado.
+- BTC, DXY, Gold y VIX: adquisición definitiva completada.
+- Integración multi-activo completada (dataset maestro: 752 observaciones, 32 variables).
+- EDA multivariado completado (correlaciones móviles, regímenes de mercado, eventos extremos).
+- Feature Engineering Fase 1 completado, sin leakage temporal.
+- Modelado baseline (Fase 1) completado: baselines + regresión lineal.
 
 Siguientes etapas:
-- Feature Engineering.
-- EDA financiero.
-- Modelado.
+- Modelado Fase 2 (notebook 09): expansión de features, regímenes, selección y optimización de modelos, validación temporal, feature importance con SHAP, robustez, cierre de hipótesis.
+
+---
+
+## Cómo reproducir este proyecto
+
+Este proyecto admite dos formas de ejecución, según el tiempo disponible:
+
+### Opción A — Reproducción rápida (recomendada para evaluación)
+
+El repositorio incluye los datasets finales ya procesados (`data/processed/dataset_modeling.csv` y `dataset_features_full.csv`). Esto permite ejecutar directamente los notebooks de modelado sin correr la adquisición completa:
+
+```bash
+pip install pandas yfinance matplotlib scikit-learn xgboost shap
+```
+
+Ejecutar en orden: `notebooks/pipeline/08_modelado_baseline.ipynb` → `notebooks/pipeline/09_modelado_fase2.ipynb`.
+
+### Opción B — Pipeline completo desde cero
+
+Para regenerar todos los datos desde las fuentes originales (Yahoo Finance vía `yfinance`):
+
+```bash
+pip install pandas yfinance matplotlib scikit-learn xgboost shap
+```
+
+Ejecutar en orden estricto los notebooks de `notebooks/pipeline/`:
+
+```
+01_btc_adquisicion_rango_fijo.ipynb
+02_dxy_adquisicion_rango_fijo.ipynb
+03_gold_adquisicion_rango_fijo.ipynb
+04_vix_adquisicion_rango_fijo.ipynb
+05_integracion_multi_activo.ipynb
+06_feature_engineering.ipynb
+07_eda_financiero.ipynb
+08_modelado_baseline.ipynb
+09_modelado_fase2.ipynb
+```
+
+Los notebooks 01–04 son independientes entre sí. A partir del 05, cada notebook depende del output del anterior. Cada notebook define `PROJECT_PATH` en su celda de configuración inicial — actualizar esa variable con la ruta local antes de ejecutar.
+
+Documentación técnica completa, decisiones de diseño y convenciones del proyecto en `GUIA_ESTRUCTURADA.md` y `reports/DS2_Pipeline_Analitico_Proyecto_Final.docx`.
