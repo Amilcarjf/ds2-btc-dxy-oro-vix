@@ -137,6 +137,8 @@ notebooks/pipeline/09_modelado_fase2.ipynb
 
 **Entrypoint del notebook 09:** el dataset de entrada es `dataset_features_full.csv`, incluido en `data/processed/`. El propio notebook 09 construye `dataset_phase2.csv` en su bloque de expansión de features y genera `model_comparison_final.csv` con las métricas comparativas de todos los modelos. No es necesario correr los notebooks anteriores — cada notebook puede ejecutarse de forma autónoma usando los datasets incluidos en el repositorio.
 
+> ✅ **Test de reproducción verificado:** se probó clonando el repositorio a una carpeta nueva y ejecutando los notebooks 08 y 09 con éxito, generando correctamente todos los CSV en `data/processed/`.
+
 ### Opción B — Pipeline completo desde cero
 
 Para regenerar todos los datos desde las fuentes originales (Yahoo Finance vía `yfinance`), ejecutar en orden estricto:
