@@ -135,7 +135,7 @@ notebooks/pipeline/08_modelado_baseline.ipynb
 notebooks/pipeline/09_modelado_fase2.ipynb
 ```
 
-**Entrypoint del notebook 09:** el dataset de entrada es `dataset_features_full.csv`, incluido en `data/processed/`. El propio notebook 09 construye `dataset_phase2.csv` en su bloque de expansión de features — no es necesario generarlo previamente.
+**Entrypoint del notebook 09:** el dataset de entrada es `dataset_features_full.csv`, incluido en `data/processed/`. El propio notebook 09 construye `dataset_phase2.csv` en su bloque de expansión de features y genera `model_comparison_final.csv` con las métricas comparativas de todos los modelos. No es necesario correr los notebooks anteriores — cada notebook puede ejecutarse de forma autónoma usando los datasets incluidos en el repositorio.
 
 ### Opción B — Pipeline completo desde cero
 
