@@ -1,0 +1,8 @@
+Modelo,MAE,RMSE,R2
+Baseline Media Histórica Fase 1,0.018624,0.02578,-0.016449
+Regresión Lineal Fase 1,0.018409,0.025659,-0.006929
+Linear Regression,0.018772,0.025907,-0.006273
+Random Forest,0.019687,0.026786,-0.075662
+XGBoost,0.020892,0.028463,-0.214545
+Random Forest Optimizado,0.019001,0.026292,-0.036352
+XGBoost Optimizado,0.018779,0.025977,-0.011664

@@ -1,11 +1,10 @@
-# ── Datos generados por el pipeline ─────────────────────────────
+# ── Datos crudos e intermedios ────────────────────────────────────
 data/raw/
 data/interim/
-data/processed/
 
-# Excepción: artefactos de entrega para reproducibilidad (Unidad de Entrega Final)
-!data/processed/dataset_modeling.csv
-!data/processed/dataset_features_full.csv
+# ── Datasets procesados — EXCEPCIÓN: todos se incluyen como artefactos de entrega
+# data/processed/ está versionada completa para garantizar reproducibilidad
+# sin depender de APIs externas en el momento de la corrección.
 
 # ── Notebooks de laboratorio y trabajo en bruto ──────────────────
 notebooks/laboratorio/
