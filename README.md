@@ -191,3 +191,5 @@ Completado:
 ---
 
 Documentación técnica completa en `GUIA_ESTRUCTURADA.md` y `reports/DS2_Pipeline_Analitico_Proyecto_Final.docx`.
+
+Declaración del uso de herramientas de IA durante el desarrollo en `METODOLOGIA_IA.md`.
