@@ -113,7 +113,14 @@ pip install pandas yfinance matplotlib scikit-learn xgboost shap
 
 ### Configuración de rutas
 
-Cada notebook define `PROJECT_PATH` en su celda de configuración inicial. Actualizar esa variable con la ruta local antes de ejecutar.
+> ⚠️ **Importante:** cada notebook define una variable `PROJECT_PATH` en su primera celda de configuración. Antes de ejecutar cualquier notebook, actualizarla con la ruta local donde se clonó el repositorio.
+>
+> Ejemplo:
+> ```python
+> PROJECT_PATH = r"C:\ruta\al\repo\clonado"
+> ```
+>
+> Sin este cambio, los notebooks no podrán encontrar los archivos de datos ni exportar los resultados.
 
 ### Opción A — Reproducción rápida (recomendada para evaluación)
 
