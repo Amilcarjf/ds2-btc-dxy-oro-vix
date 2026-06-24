@@ -155,7 +155,7 @@ Notebooks modulares del pipeline operativo. Cada notebook tiene responsabilidad 
 | `03_gold_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de Gold | `gold_processed.csv` |
 | `04_vix_adquisicion_rango_fijo.ipynb` | Adquirir, limpiar, validar y construir features iniciales de VIX | `vix_processed.csv` |
 | `05_integracion_multi_activo.ipynb` | Unificar los cuatro datasets en un DataFrame único alineado temporalmente | `dataset_integrado.csv` |
-| `06_feature_engineering.ipynb` | Construir features **de Fase 1 únicamente** (lags simples, volatilidad y MA de 7 días, niveles DXY/Oro/VIX) con notación temporal correcta. La expansión de features (lags extendidos, ventanas múltiples, interacciones) ocurre en el notebook 09 como Bloque 1 de la Fase 2 | `dataset_features.csv` |
+| `06_feature_engineering.ipynb` | Construir features **de Fase 1 únicamente** (lags simples, volatilidad y MA de 7 días, niveles DXY/Oro/VIX) con notación temporal correcta. La expansión de features (lags extendidos, ventanas múltiples, interacciones) ocurre en el notebook 09 como Bloque 1 de la Fase 2 | `dataset_features_full.csv` (todas las columnas) y `dataset_modeling.csv` (solo features + target) |
 | `07_eda_financiero.ipynb` | EDA analítico multi-activo, correlaciones, regímenes, hipótesis descriptivas | — |
 | `08_modelado_baseline.ipynb` | Baseline naive y media histórica. Modelado lineal base. Evaluación Fase 1 | — |
 | `09_modelado_fase2.ipynb` | Bloque 1: expansión de features (lags extendidos, ventanas múltiples, interacciones). Luego: regímenes de mercado, modelos avanzados, validación temporal, feature importance | — |
@@ -265,7 +265,7 @@ El notebook 06 construye **únicamente** las features definidas en la sección 3
 
 La expansión de features — lags extendidos, ventanas múltiples de volatilidad (7d/14d/30d), MAs múltiples y variables de interacción — pertenece a la Fase 2 y se construye dentro del **notebook 09**, como Bloque 1, replicando la sección 8.3 del Diseño Técnico ("Bloque 1 — Expansión de Features").
 
-Esta separación se documenta explícitamente para evitar ambigüedad sobre qué notebook es responsable de qué conjunto de features. El dataset `dataset_features.csv` generado por el 06 contiene exclusivamente features de Fase 1.
+Esta separación se documenta explícitamente para evitar ambigüedad sobre qué notebook es responsable de qué conjunto de features. El notebook 06 genera dos datasets: `dataset_features_full.csv` (dataset completo con todas las columnas) y `dataset_modeling.csv` (solo features de Fase 1 + target, listo para modelado). Ambos contienen exclusivamente features de Fase 1.
 
 ### Doble baseline
 
@@ -310,7 +310,7 @@ dxy_processed.csv
 gold_processed.csv
 vix_processed.csv
 dataset_integrado.csv
-dataset_features.csv
+dataset_features_full.csv
 ```
 
 ### Estructura de `PROJECT_PATH`
@@ -397,7 +397,10 @@ dxy_processed.csv        ← generado por 02
 gold_processed.csv        ← generado por 03
 vix_processed.csv        ← generado por 04
 dataset_integrado.csv    ← generado por 05
-dataset_features.csv     ← generado por 06
+dataset_features_full.csv  ← generado por 06 (dataset completo)
+dataset_modeling.csv       ← generado por 06 (features Fase 1 + target)
+dataset_phase2.csv         ← generado por 09 (features Fase 2)
+model_comparison_final.csv ← generado por 09 (métricas comparativas)
 ```
 
 ---
