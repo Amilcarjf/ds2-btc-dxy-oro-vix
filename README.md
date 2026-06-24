@@ -126,12 +126,16 @@ pip install pandas yfinance matplotlib scikit-learn xgboost shap
 
 Dado que todos los datasets están incluidos en el repositorio, es posible ejecutar cualquier notebook directamente sin necesidad de correr los anteriores.
 
+> ⚠️ **Rutas:** los notebooks no usan rutas relativas. Cargan y exportan archivos mediante `os.path.join(PROJECT_PATH, ...)`. Antes de ejecutar, actualizar la variable `PROJECT_PATH` en la primera celda del notebook con la ruta local donde se clonó el repositorio.
+
 Para evaluar el modelado completo, ejecutar directamente:
 
 ```
 notebooks/pipeline/08_modelado_baseline.ipynb
 notebooks/pipeline/09_modelado_fase2.ipynb
 ```
+
+**Entrypoint del notebook 09:** el dataset de entrada es `dataset_features_full.csv`, incluido en `data/processed/`. El propio notebook 09 construye `dataset_phase2.csv` en su bloque de expansión de features — no es necesario generarlo previamente.
 
 ### Opción B — Pipeline completo desde cero
 
